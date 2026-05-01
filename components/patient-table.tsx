@@ -407,8 +407,8 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
                 </div>
               </th>
               <th className="w-[180px] min-w-[180px] px-3 py-2 text-left">
-                <button onClick={() => handleSort('name')} className="flex items-center gap-1 text-left">
-                  <span className={`text-[14px] font-normal ${sortConfig.column === 'name' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                <button onClick={() => handleSort('name')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                  <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'name' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                     Patient Name
                   </span>
                   <SortIcon column="name" />
@@ -417,8 +417,8 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
               <th className="w-[120px] min-w-[120px] px-3 py-2 text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-border text-[10px]">|</span>
-                  <button onClick={() => handleSort('payerStatus')} className="flex items-center gap-1 text-left">
-                    <span className={`text-[14px] font-normal ${sortConfig.column === 'payerStatus' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                  <button onClick={() => handleSort('payerStatus')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                    <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'payerStatus' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                       Payer status
                     </span>
                     <SortIcon column="payerStatus" />
@@ -428,8 +428,8 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
               <th className="w-[130px] min-w-[130px] px-3 py-2 text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-border text-[10px]">|</span>
-                  <button onClick={() => handleSort('primaryPayer')} className="flex items-center gap-1 text-left">
-                    <span className={`text-[14px] font-normal ${sortConfig.column === 'primaryPayer' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                  <button onClick={() => handleSort('primaryPayer')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                    <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'primaryPayer' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                       Primary payer
                     </span>
                     <SortIcon column="primaryPayer" />
@@ -439,41 +439,41 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
               <th className="w-[130px] min-w-[130px] px-3 py-2 text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-border text-[10px]">|</span>
-                  <button onClick={() => handleSort('diagnosis')} className="flex items-center gap-1 text-left">
-                    <span className={`text-[14px] font-normal ${sortConfig.column === 'diagnosis' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                  <button onClick={() => handleSort('diagnosis')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                    <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'diagnosis' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                       Diagnosis
                     </span>
                     <SortIcon column="diagnosis" />
                   </button>
                 </div>
               </th>
-              <th className="w-[100px] min-w-[100px] px-3 py-2 text-left">
+              <th className="w-[120px] min-w-[120px] px-3 py-2 text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-border text-[10px]">|</span>
-                  <button onClick={() => handleSort('activeOrders')} className="flex items-center gap-1 text-left">
-                    <span className={`text-[14px] font-normal ${sortConfig.column === 'activeOrders' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                  <button onClick={() => handleSort('activeOrders')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                    <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'activeOrders' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                       Active orders
                     </span>
                     <SortIcon column="activeOrders" />
                   </button>
                 </div>
               </th>
-              <th className="w-[110px] min-w-[110px] px-3 py-2 text-left">
+              <th className="w-[130px] min-w-[130px] px-3 py-2 text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-border text-[10px]">|</span>
-                  <button onClick={() => handleSort('symptoms')} className="flex items-center gap-1 text-left">
-                    <span className={`text-[14px] font-normal ${sortConfig.column === 'symptoms' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                  <button onClick={() => handleSort('symptoms')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                    <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'symptoms' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                       New symptoms
                     </span>
                     <SortIcon column="symptoms" />
                   </button>
                 </div>
               </th>
-              <th className="w-[85px] min-w-[85px] px-3 py-2 text-left">
+              <th className="w-[110px] min-w-[110px] px-3 py-2 text-left">
                 <div className="flex items-center gap-2">
                   <span className="text-border text-[10px]">|</span>
-                  <button onClick={() => handleSort('dateAdded')} className="flex items-center gap-1 text-left">
-                    <span className={`text-[14px] font-normal ${sortConfig.column === 'dateAdded' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
+                  <button onClick={() => handleSort('dateAdded')} className="flex items-center gap-1 text-left whitespace-nowrap">
+                    <span className={`text-[13px] font-normal whitespace-nowrap ${sortConfig.column === 'dateAdded' ? 'text-[#7268dd]' : 'text-[#4b5563]'}`}>
                       Date added
                     </span>
                     <SortIcon column="dateAdded" />
@@ -551,10 +551,10 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
                       )}
                     </div>
                   </td>
-                  <td className="w-[100px] min-w-[100px] px-3 py-2 text-[12px] text-muted-text text-center">
+                  <td className="w-[120px] min-w-[120px] px-3 py-2 text-[12px] text-muted-text text-left">
                     {patient.activeOrders}
                   </td>
-                  <td className="w-[110px] min-w-[110px] px-3 py-2">
+                  <td className="w-[130px] min-w-[130px] px-3 py-2">
                     {patient.newSymptoms > 0 ? (
                       <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-medium bg-[#fef3f2] text-[#b3261e]">
                         <AlertCircle className="w-2.5 h-2.5" />
@@ -564,7 +564,7 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
                       <span className="text-[11px] text-muted-text">None</span>
                     )}
                   </td>
-                  <td className="w-[85px] min-w-[85px] px-3 py-2 text-[12px] text-text">
+                  <td className="w-[110px] min-w-[110px] px-3 py-2 text-[12px] text-text">
                     {patient.dateAdded}
                   </td>
                   <td className="w-[36px] min-w-[36px] px-2 py-2">

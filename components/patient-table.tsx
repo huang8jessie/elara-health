@@ -392,10 +392,10 @@ export function PatientTable({ patients, activeBucket, onNavigateToPatient }: Pa
       </div>
 
       {/* Table */}
-      <div className="overflow-y-auto" style={{ height: 'calc(100% - 72px)' }}>
+      <div className="patient-table-scroll overflow-y-auto" style={{ maxHeight: 'calc(640px - 72px)' }}>
         <table className="w-full table-fixed">
-          <thead className="sticky top-0 bg-background-2">
-            <tr className="border-t border-border h-[40px]">
+          <thead>
+            <tr className="sticky top-0 z-10 h-[40px] border-b border-[#e5e7eb] bg-white">
               <th className="w-[40px] min-w-[40px] pl-4 py-2">
                 <div className="flex items-center gap-3">
                   <SelectionCheckbox

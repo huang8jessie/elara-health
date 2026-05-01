@@ -77,8 +77,35 @@ const summary = {
 }
 
 export default function DashboardPage() {
-  const [activeBucket, setActiveBucket] = useState('all_residents')
-  const [currentPage, setCurrentPage] = useState(0)
+  const [activeBucket, setActiveBucket] = useState<string>(() => {
+    if (typeof window === 'undefined') return 'all_residents'
+    try {
+      const saved = sessionStorage.getItem('dashboardState')
+      if (saved) {
+        const state = JSON.parse(saved) as { activeTab?: string }
+        const validBuckets = new Set(['active', 'assess_for_orders', 'evaluate_and_treat', 'discontinue_orders', 'all_residents'])
+        if (typeof state.activeTab === 'string' && validBuckets.has(state.activeTab)) {
+          return state.activeTab
+        }
+      }
+    } catch {
+      // Ignore storage parse errors and use default.
+    }
+    return 'all_residents'
+  })
+  const [currentPage, setCurrentPage] = useState<number>(() => {
+    if (typeof window === 'undefined') return 0
+    try {
+      const saved = sessionStorage.getItem('dashboardState')
+      if (saved) {
+        const state = JSON.parse(saved) as { pageIndex?: number }
+        if (typeof state.pageIndex === 'number') return state.pageIndex
+      }
+    } catch {
+      // Ignore storage parse errors and use default.
+    }
+    return 0
+  })
   const [selectedFacility, setSelectedFacility] = useState('all')
   const [selectedUnit, setSelectedUnit] = useState('all')
   const transformedPatients = transformPatients(patientsData.patients)
@@ -109,43 +136,23 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-
-    let shouldClearSavedState = false
     try {
       const saved = sessionStorage.getItem('dashboardState')
       if (!saved) return
 
-      const state = JSON.parse(saved) as { activeTab?: string; scrollY?: number; pageIndex?: number }
-      const validBuckets = new Set(['active', 'assess_for_orders', 'evaluate_and_treat', 'discontinue_orders', 'all_residents'])
-
-      if (typeof state.activeTab === 'string' && validBuckets.has(state.activeTab)) {
-        setActiveBucket(state.activeTab)
-      }
-
-      if (typeof state.pageIndex === 'number') {
-        setCurrentPage(state.pageIndex)
-      }
+      const state = JSON.parse(saved) as { scrollY?: number }
 
       if (typeof state.scrollY === 'number') {
-        window.setTimeout(() => {
-          window.scrollTo(0, state.scrollY)
-        }, 50)
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: state.scrollY, behavior: 'instant' })
+        })
       }
-
-      shouldClearSavedState = true
+      sessionStorage.removeItem('dashboardState')
     } catch {
       try {
         sessionStorage.removeItem('dashboardState')
       } catch {
         // Ignore cleanup failures.
-      }
-    } finally {
-      if (shouldClearSavedState) {
-        try {
-          sessionStorage.removeItem('dashboardState')
-        } catch {
-          // Ignore cleanup failures.
-        }
       }
     }
   }, [])
